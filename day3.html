@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .frame {
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #272c34;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+      }
+
+      .circle {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        /* clip-path是什么意思 ？ clip-path CSS 属性使用裁剪方式创建元素的可显示区域。区域内的部分显示，区域外的隐藏。 */
+        clip-path: circle(90px at 90px 90px);
+        position: relative;
+      }
+
+      .sky {
+        width: 100%;
+        position: absolute;
+        z-index: 0;
+        height: 124px;
+        top: 0;
+        left: 0;
+        background-color: #7ddffc;
+        animation: fading-sky 4s ease-in-out infinite;
+      }
+
+      .sun {
+        z-index: 2;
+        width: 34px;
+        height: 34px;
+        left: calc(50% - 17px);
+        position: absolute;
+        border-radius: 50%;
+        background-color: #ffef00;
+        /* 改变形变原点，这样能在rotate时实现绕点旋转 */
+        transform-origin: 50% 400%;
+        animation: sundown 4s ease-in-out infinite;
+      }
+
+      /* 金字塔的左半部分 */
+      .side-left {
+        position: absolute;
+        /* top + height = sky.height = 124px */
+        top: 67px;
+        height: 57px;
+        /* middle: 90px = 35 + 55px(110 / 2) */
+        left: 35px;
+        width: 110px;
+        background-color: #f4f4f4;
+        /* 实现三角形的另一种方法，可以使用clip-path来裁剪可视区域 */
+        clip-path: polygon(0% 100%, 100% 100%, 50% 0);
+        animation: side-gradient 4s ease-in-out infinite;
+      }
+
+      /* 金字塔的右半部分 */
+      .side-right {
+        position: absolute;
+        left: 90px;
+        top: 67px;
+        height: 57px;
+        width: 58px;
+        clip-path: polygon(30% 100%, 100% 100%, 0% 0%);
+        background-color: #dddada;
+        animation: side-gradient 4s ease-in-out infinite reverse;
+      }
+
+      /* 影子 */
+      .shadow {
+        position: absolute;
+        z-index: 2;
+        /* sky的高度 */
+        top: 124px;
+        width: 360px;
+        left: -80px;
+        height: 30px;
+        /*  */
+        clip-path: polygon(115px 0%, 231px 0%, 80% 100%);
+        transform-origin: 50% 0;
+        background-color: rgba(0, 0, 0, 0.2);
+        animation: shadow-on-the-floor 4s ease-in-out infinite;
+      }
+
+      .ground {
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 56px;
+        background: #f0de75;
+        animation: fading-sand 4s ease-in-out infinite;
+      }
+
+      @keyframes sundown {
+        0% {
+          transform: rotate(-70deg);
+        }
+
+        40% {
+          transform: rotate(-10deg);
+        }
+
+        100% {
+          transform: rotate(70deg);
+        }
+      }
+
+      @keyframes side-gradient {
+        0% {
+          background: #272c34;
+        }
+
+        30% {
+          background: #f4f4f4;
+        }
+
+        70% {
+          background: #dddada;
+        }
+
+        100% {
+          background: #272c34;
+        }
+      }
+
+
+      @keyframes shadow-on-the-floor {
+        0% {
+          transform: scaleY(0);
+          clip-path: polygon(115px 0%, 231px 0%, 100% 100%);
+        }
+
+        30% {
+          transform: scaleY(1);
+          clip-path: polygon(115px 0%, 231px 0%, 80% 100%);
+        }
+
+        55% {
+          transform: scaleY(0.4);
+        }
+
+        75% {
+          transform: scaleY(1);
+        }
+
+        100% {
+          transform: scaleY(0);
+          clip-path: polygon(115px 0%, 231px 0%, 0% 100%);
+        }
+      }
+
+      @keyframes fading-sand {
+        0% {
+          background: #272c34;
+        }
+
+        30% {
+          background: #f0de75;
+        }
+
+        70% {
+          background: #f0de75;
+        }
+
+        100% {
+          background: #272c34;
+        }
+      }
+
+      @keyframes fading-sky {
+        0% {
+          background: #272c34;
+        }
+
+        30% {
+          background: #7ddffc;
+        }
+
+        70% {
+          background: #7ddffc;
+        }
+
+        100% {
+          background: #272c34;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="frame">
+      <div class="center">
+        <div class="circle">
+          <div class="sky"></div>
+          <div class="sun"></div>
+          <div class="side-left"></div>
+          <div class="side-right"></div>
+          <div class="shadow"></div>
+          <div class="ground"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

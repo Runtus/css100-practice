@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="frame">
+        <div class="center">
+            <div class="line1 line no-animation"></div>
+            <div class="line2 line no-animation"></div>
+            <div class="line3 line no-animation"></div>
+            <div class="active line"></div>
+        </div>
+    </div>
+</body>
+<script>
+    const center = document.getElementsByClassName("center");
+    let isActivate = false;
+    center[0].addEventListener("click", function() {
+        if(!isActivate){
+            Array.from(center[0].children).forEach(item => {
+                item.classList.remove("no-animation")
+                item.classList.add("active")
+            })
+        }else {
+            Array.from(center[0].children).forEach(item => {
+                item.classList.remove("active") 
+            })
+        }
+        isActivate = !isActivate;
+        
+    })
+</script>
+<style>
+    
+    .frame {
+        width: 400px;
+        height: 400px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: #3FAF82;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .center {
+        width: 75px;
+        height: 75px;
+    
+    }
+
+    .center:hover {
+        cursor: pointer;
+    }
+
+    .line {
+        height: 8px;
+        border-radius: 5px;
+        width: 100%;
+        background-color: aliceblue;
+        margin-top: 12px;
+        box-shadow: 0 2px 10px 0 rgba(0,0,0,0.3);
+    }
+
+    .no-animation{
+        animation: none !important;
+    }
+
+    /* TODO 查一下active伪类 */
+    .active.line1 {
+        animation: line-1-change 1s ease-in-out forwards !important;
+        background-color: aqua;
+    }
+    
+    .active.line2 {
+        animation: line-2-change 1s ease-in-out forwards !important;
+    }
+
+    .active.line3 {
+        animation: line-3-change 1s ease-in-out forwards !important;
+    }
+
+    .line1 {
+        animation: line-1-change-rev 1s ease-in-out;
+        background-color: aquamarine;
+    }
+
+    .line2 {
+        animation: line-2-change-rev 1s ease-in-out;
+    }
+
+    .line3 {
+        animation: line-3-change-rev 1s ease-in-out;
+    }
+
+    
+    
+
+    /* 为每个line都设置一个动画 */
+    @keyframes line-1-change {
+        0% {
+            transform: translate3d(0, 0, 0) rotate(0deg);
+        }
+
+        50% {
+            transform: translate3d(0, 20px, 0) rotate(0deg);
+        }
+
+        100% {
+            transform: translate3d(0, 20px, 0) rotate(45deg);
+        }
+    }
+
+    @keyframes line-1-change-rev {
+        0% {
+            transform: translate3d(0, 20px, 0) rotate(45deg);
+        }
+
+        50% {
+            transform: translate3d(0, 20px, 0) rotate(0deg);
+        }
+
+        100% {
+            transform: translate3d(0, 0, 0) rotate(0);
+        }
+    }
+
+    @keyframes line-2-change {
+        0% {
+            transform: rotate(0);
+        }
+
+        50% {
+            transform: rotate(0);
+        }
+
+        100% {
+            transform: rotate(45deg);;
+        }
+    }
+
+    @keyframes line-2-change-rev {
+        0% {
+            transform: rotate(45deg);
+        }
+
+        50% {
+            transform: rotate(0);
+        }
+
+        100% {
+            transform: rotate(0);
+        }
+    }
+
+    @keyframes line-3-change {
+        0% {
+            transform: translate3d(0, 0, 0) rotate(0);
+        }
+
+        50% {
+            transform: translate3d(0, -20px, 0) rotate(0deg);
+        }
+
+        100% {
+            transform: translate3d(0, -20px, 0) rotate(-45deg);
+        }
+    }
+
+    @keyframes line-3-change-rev {
+        0% {
+            transform: translate3d(0, -20px, 0) rotate(-45deg);
+        }
+
+        50% {
+            transform: translate3d(0, -20px, 0) rotate(0deg);
+        }
+
+        100% {
+            transform: translate3d(0, 0, 0) rotate(0);
+        }
+    }
+
+
+    
+</style>
+</html>
