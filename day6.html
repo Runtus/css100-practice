@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style type="sass">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+      .frame {
+        width: 400px;
+        height: 400px;
+        border-radius: 12px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(to top right, #eebe6c 0%, #ca7c4e 100%);
+      }
+
+      .center {
+        display: flex;
+        width: 330px;
+        height: 330px;
+        background-color: #fff;
+        box-shadow: 10px 10px 15px 0 rgba(0,0,0,0.3);
+        border-radius: 4px;
+      }
+
+      .profile {
+    
+        width: 220px;
+        height: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+      }
+
+      .people {
+        text-align: center;
+      }
+
+ 
+
+      img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+      }
+
+      button {
+        width: 120px;
+        height: 30px;
+        background: none;
+        border-radius: 15px;
+        font-size: 12px;
+        font-weight: 600;
+        transition: all 0.3s ease-in-out;
+        color: #786450;
+        box-sizing: border-box;
+        border: 1px solid #786450;
+
+      }
+
+      button:hover {
+        cursor: pointer;
+        background-color: #786450;
+        color: #fff;
+      }
+
+      .message {
+        margin-top: 12px;
+      }
+
+      .buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100px;
+      }
+
+
+
+      .status {
+        width: 110px;
+        height: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+
+      .box {
+        border-radius: 4px;
+        width: 100%;
+        height: 33%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #F5E8DF;
+        transition: all .4s ease-in-out;
+        color: #786450;
+      }
+      
+      .box:hover {
+        background: #E1CFC2;
+		cursor: pointer;
+      }
+
+      .p1 {
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      .p2 {
+        font-size: 11px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="frame">
+      <div class="center">
+        <div class="profile">
+          <div class="people">
+            <img
+              src="https://lao-lan-go.oss-accelerate.aliyuncs.com/hugo-server/8675F553-88C3-4948-85EA-112329F06F0B.jpg"
+              alt=""
+              id="avatar"
+            />
+            <div class="intro">
+              <h3 class="name">Runtus</h3>
+              <p class="somewords">Code is life</p>
+            </div>
+          </div>
+          <div class="buttons">
+            <button class="follow">Follow</button>
+            <button class="message">Message</button>
+          </div>
+        </div>
+        <div class="status">
+          <div class="posts box">
+            <p class="p1">523</p>
+            <p class="p2">Posts</p>
+          </div>
+          <div class="likes box">
+            <p class="p1">1387</p>
+            <p class="p2">Likes</p>
+          </div>
+          <div class="followers box">
+            <p class="p1">146</p> 
+            <p class="p2">followers</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
